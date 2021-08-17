@@ -1,10 +1,12 @@
 public class MainClass {
 
-    public int getLocalNumber()
+    private int class_number = 20;
+
+    public int getClassNumber()
     {
-        final int i = 14;
-        return i;
+        return this.class_number;
     }
+
 }
 
 

@@ -4,12 +4,11 @@ import org.junit.Test;
 public class MainClassTest {
 
     @Test
-    public void testGetLocalNumber()
+    public void testGetClassNumber()
     {
-        MainClass obj = new MainClass();
-        if(obj.getLocalNumber() != 14)
-            Assert.fail("Local Number is Not equal 14! Local Number=" + obj.getLocalNumber());
+        if(new MainClass().getClassNumber() > 45)
+            System.out.println("Test passed.");
         else
-            System.out.println("getLocalNumber = 14");
+            Assert.fail("Test failed! getClassNumber() returned value <= 45");
     }
 }
