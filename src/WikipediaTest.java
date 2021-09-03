@@ -11,6 +11,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
+import java.util.List;
+import java.util.Locale;
 
 public class WikipediaTest {
 
@@ -39,13 +41,14 @@ public class WikipediaTest {
         driver.quit();
     }
 
-    /*@Test
+    /*
+    @Test
     public void testCompareSearchFieldText()
     {
         Assert.assertTrue(assertElementHasText(By.id("org.wikipedia:id/search_container"),
                 "Search Wikipedia",
                 "Web element does not contain the desired text."));
-    }*/
+    }
 
     @Test
     public void testCancelSearch()
@@ -83,6 +86,38 @@ public class WikipediaTest {
                 "Result list is still present on the page",
                 5
         );
+    }
+    */
+
+    @Test
+    public void testCompareSearchWord()
+    {
+        // set focus on the search field
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Can not find Wikipedia input",
+                5
+        );
+
+        // search for the text "Java"
+        waitForElementAndSendKeys(By.xpath("//*[contains(@text, 'Search…')]"), "JAVA",
+                "Can not find search input", 5);
+
+        WebElement container_element = waitForElementPresent(
+                By.id("org.wikipedia:id/search_results_list"),
+                "Can not find searched element",
+                5
+        );
+        // find results list
+        List<WebElement> list = container_element.findElements(By.id("org.wikipedia:id/page_list_item_title"));
+
+        // compare that each instance in result list has text 'Java'
+        for (WebElement element : list
+             ) {
+            String element_text = element.getAttribute("text");
+            Assert.assertTrue("Element with text '"+element_text+"' does not contain substring 'Java'",
+                    element_text.toLowerCase().contains("Java".toLowerCase()));
+        }
     }
 
     private WebElement waitForElementAndClick(By by, String error_message, long timeOutInSeconds)
