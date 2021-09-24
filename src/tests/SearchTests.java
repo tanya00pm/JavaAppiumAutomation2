@@ -66,4 +66,28 @@ public class SearchTests extends CoreTestCase
         SearchPageObject.assertThereIsNoResultOfSearch();
     }
     /* Ex3 */
+
+    /* Ex9 */
+    @Test
+    public void testSearchArticlesByTitleAndDescription()
+    {
+        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject.initSearchInput();
+        String search_line = "Kotlin";
+        SearchPageObject.typeSearchLine(search_line);
+        int search_results = SearchPageObject.getAmountOfFoundArticles();
+
+        assertTrue("Search results are less than 3",
+                search_results > 2);
+
+        SearchPageObject.waitForElementByTitleAndDescription("Kotlin",
+                "Wikimedia disambiguation page");
+
+        SearchPageObject.waitForElementByTitleAndDescription("Kotlin (programming language)",
+                "Programming language");
+
+        SearchPageObject.waitForElementByTitleAndDescription("Kotlin-class destroyer",
+                "Class of Soviet cold-war destroyers");
+    }
+    /* Ex9 */
 }
