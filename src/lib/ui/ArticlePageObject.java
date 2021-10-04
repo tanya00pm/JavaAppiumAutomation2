@@ -112,7 +112,7 @@ public class ArticlePageObject extends MainPageObject {
     }
 
     public void closeArticle()
-    {
+    {System.out.println("closeArticle method is started");
         this.waitForElementAndClick(CLOSE_ARTICLE_BUTTON,
                 "Cannot close article, cannot find 'X' link", 15);
     }

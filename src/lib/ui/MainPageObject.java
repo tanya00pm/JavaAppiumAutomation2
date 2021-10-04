@@ -38,7 +38,7 @@ public class MainPageObject {
     }
 
     public WebElement waitForElementAndClick(String locator, String error_message, long timeOutInSeconds)
-    {
+    {System.out.println("current locator is " + locator);
         WebElement element = waitForElementPresent(locator, error_message, timeOutInSeconds);
         element.click();
         return element;
@@ -99,7 +99,7 @@ public class MainPageObject {
         By by = this.getLocatorByString(locator);
 
         int already_swiped=0;
-        if(already_swiped > max_swipes){
+        if(already_swiped > max_swipes) {
             waitForElementPresent(locator,
                     "Can not find element by swiping up. \n" + error_message, 0);
             return;

@@ -18,14 +18,16 @@ public class CoreTestCase extends TestCase {
 
     protected AppiumDriver driver;
     private static String AppiumURL = "http://127.0.0.1:4723/wd/hub";
+    protected Platform Platform;
 
     @Override
     protected void setUp() throws Exception
     {
         super.setUp();
+      //  this.Platform = new Platform();
+      //  driver = this.Platform.getDriver();
 
         DesiredCapabilities capabilities = this.getCapabilitiesByPlatformEnv();
-
         driver = new AndroidDriver(new URL(AppiumURL),
                 capabilities);
 
@@ -80,4 +82,9 @@ public class CoreTestCase extends TestCase {
 
         return capabilities;
     }
+
+   // private AppiumDriver getDriverByPlatformEnv() throws Exception
+   // {
+   //     String platform = System.getenv("PLATFORM");
+   // }
 }

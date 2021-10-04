@@ -1,5 +1,6 @@
-package tests.iOS;
+package tests;
 
+import lib.CoreTestCase;
 import lib.iOSTestCase;
 import lib.ui.WelcomePageObject;
 import org.junit.Test;
