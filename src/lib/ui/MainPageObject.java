@@ -38,7 +38,7 @@ public class MainPageObject {
     }
 
     public WebElement waitForElementAndClick(String locator, String error_message, long timeOutInSeconds)
-    {System.out.println("current locator is " + locator);
+    {
         WebElement element = waitForElementPresent(locator, error_message, timeOutInSeconds);
         element.click();
         return element;
@@ -127,7 +127,7 @@ public class MainPageObject {
 
         action
                 .press(PointOption.point(right_x, middle_y))
-                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(100)))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(150)))
                 .moveTo(PointOption.point(left_x, middle_y))
                 .release()
                 .perform();
@@ -145,7 +145,7 @@ public class MainPageObject {
         int amount_of_elements = getAmountOfElements(locator);
         if(amount_of_elements > 0)
         {
-            String default_message = "An element '" + locator +"' supposed to be not present.";
+            String default_message = "An element '" + locator +"' supposed to be present.";
             throw new AssertionError(default_message + " " + error_message);
         }
     }
