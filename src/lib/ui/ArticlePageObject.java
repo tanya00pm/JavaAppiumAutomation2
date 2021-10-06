@@ -83,7 +83,7 @@ public class ArticlePageObject extends MainPageObject {
                 5
         );
 
-        this.waitForElementAndClear(
+        this.waitForElementAndClick(
                 MY_LIST_OK_BUTTON,
                 "Can not press Ok button",
                 5
@@ -112,7 +112,7 @@ public class ArticlePageObject extends MainPageObject {
     }
 
     public void closeArticle()
-    {System.out.println("closeArticle method is started");
+    {
         this.waitForElementAndClick(CLOSE_ARTICLE_BUTTON,
                 "Cannot close article, cannot find 'X' link", 15);
     }
