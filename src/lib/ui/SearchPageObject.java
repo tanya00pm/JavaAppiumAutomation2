@@ -2,9 +2,9 @@ package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
 
-public class SearchPageObject extends MainPageObject {
+abstract public class SearchPageObject extends MainPageObject {
 
-    private static final String
+    /*private static final String
             SEARCH_INIT_ELEMENT = "xpath://*[contains(@text, 'Search Wikipedia')]",
             SEARCH_INPUT = "xpath://*[contains(@text, 'Search…')]",
             SEARCH_CANCEL_BUTTON = "id:org.wikipedia:id/search_close_btn",
@@ -15,6 +15,16 @@ public class SearchPageObject extends MainPageObject {
             SEARCH_RESULT_BY_TITLE_DESCRIPTION_TPL = "xpath://*[@resource-id='org.wikipedia:id/page_list_item_container']" +
                     "[//@resource-id='org.wikipedia:id/page_list_item_title' and //@text='{TITLE}']" +
                     "[//@resource-id='org.wikipedia:id/page_list_item_description' and //@text='{DESCRIPTION}']";
+    */
+    protected static String
+            SEARCH_INIT_ELEMENT,
+            SEARCH_INPUT,
+            SEARCH_CANCEL_BUTTON,
+            SEARCH_RESULT_BY_SUBSTRING_TPL,
+            SEARCH_RESULT_ELEMENT,
+            SEARCH_EMPTY_RESULT_ELEMENT,
+            SEARCH_INPUT_TEXT,
+            SEARCH_RESULT_BY_TITLE_DESCRIPTION_TPL;
 
     public SearchPageObject(AppiumDriver driver)
     {
@@ -76,7 +86,7 @@ public class SearchPageObject extends MainPageObject {
         );
     }
 
-    public void typeSearchLine(String search_line) {
+    public void typeSearchLine(String search_line) {System.out.println("typeSearchLine: Current locator is "+SEARCH_INPUT);
         this.waitForElementAndSendKeys(SEARCH_INPUT, search_line,
                 "Cannot find and type into search input",5);
     }
