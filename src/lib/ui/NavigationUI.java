@@ -2,12 +2,16 @@ package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
 
-public class NavigationUI extends MainPageObject {
+abstract public class NavigationUI extends MainPageObject {
 
-    private static final String
-            MY_LISTS_LINK = "xpath://android.widget.FrameLayout[@content-desc='My lists']",
-            MY_LISTS_FOLDER_NAME_TPL = "xpath://*[@text='{FOLDER_NAME}']",
+   // private static final String
+   //         MY_LISTS_LINK = "xpath://android.widget.FrameLayout[@content-desc='My lists']",
+   private static final String
+           MY_LISTS_FOLDER_NAME_TPL = "xpath://*[@text='{FOLDER_NAME}']",
             SEARCH_MENU = "id:org.wikipedia:id/menu_search_lists";
+
+    protected static String
+            MY_LISTS_LINK;
 
     public NavigationUI(AppiumDriver driver)
     {

@@ -71,7 +71,7 @@ public class Platform {
         capabilities.setCapability("platformName", "iOS");
         capabilities.setCapability("deviceName", "iPhone SE Test");
         capabilities.setCapability("platformVersion", "13.6");
-        capabilities.setCapability("app", "/Users/tatiana/Desktop/JavaAppiumAutomation/apks/Wikipedia.app");
+        capabilities.setCapability("app", "/Users/tatiana/Downloads/Wikipedia_2.app");
         return capabilities;
     }
 

@@ -86,9 +86,9 @@ abstract public class SearchPageObject extends MainPageObject {
         );
     }
 
-    public void typeSearchLine(String search_line) {System.out.println("typeSearchLine: Current locator is "+SEARCH_INPUT);
+    public void typeSearchLine(String search_line) {
         this.waitForElementAndSendKeys(SEARCH_INPUT, search_line,
-                "Cannot find and type into search input",5);
+                "Cannot find and type into search input",15);
     }
 
     public void waitForSearchResult(String substring) {

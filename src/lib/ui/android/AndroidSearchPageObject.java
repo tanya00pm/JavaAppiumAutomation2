@@ -16,8 +16,7 @@ public class AndroidSearchPageObject extends SearchPageObject {
                     "[//@resource-id='org.wikipedia:id/page_list_item_title' and //@text='{TITLE}']" +
                     "[//@resource-id='org.wikipedia:id/page_list_item_description' and //@text='{DESCRIPTION}']";
     }
-    public AndroidSearchPageObject(AppiumDriver driver)
-    {
+    public AndroidSearchPageObject(AppiumDriver driver) {
         super(driver);
     }
 }

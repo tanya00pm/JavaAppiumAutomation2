@@ -1,15 +1,21 @@
 package tests;
 
 import lib.CoreTestCase;
+import lib.Platform;
 import lib.ui.ArticlePageObject;
 import lib.ui.MyListsPageObject;
 import lib.ui.NavigationUI;
 import lib.ui.SearchPageObject;
+import lib.ui.factories.ArticlePageObjectFactory;
+import lib.ui.factories.MyListsPageObjectFactory;
+import lib.ui.factories.NavigationUIFactory;
 import lib.ui.factories.SearchPageObjectFactory;
 import org.junit.Test;
 
 public class MyListsTests extends CoreTestCase
 {
+    private static final String name_of_folder = "Learning programming";
+
     @Test
     public void testSaveFirstArticleToMyList()
     {
@@ -18,18 +24,26 @@ public class MyListsTests extends CoreTestCase
         SearchPageObject.typeSearchLine("Java");
         SearchPageObject.clickByArticleWithSubstring("Object-oriented programming language");
 
-        ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
+        ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);;
         ArticlePageObject.waitForTitleElement();
         String article_title = ArticlePageObject.getArticleTitle();
-        String name_of_folder = "Learning programming";
+
+        if(Platform.getInstance().isAndroid()) {
         ArticlePageObject.addArticleToMyList(name_of_folder);
+        } else {
+            ArticlePageObject.addArticleTitleToMySaved();
+        }
         ArticlePageObject.closeArticle();
 
-        NavigationUI NavigationUI = new NavigationUI(driver);
+        NavigationUI NavigationUI = NavigationUIFactory.get(driver);
         NavigationUI.clickMyLists();
 
-        MyListsPageObject MyListsPageObject = new MyListsPageObject(driver);
+        MyListsPageObject MyListsPageObject = MyListsPageObjectFactory.get(driver);
+
+        if(Platform.getInstance().isAndroid()) {
         MyListsPageObject.openFolderByName(name_of_folder);
+        }
+
         MyListsPageObject.swipeByArticleToDelete(article_title);
     }
 
@@ -45,7 +59,7 @@ public class MyListsTests extends CoreTestCase
         SearchPageObject.typeSearchLine(search_input);
         SearchPageObject.clickByArticleWithSubstring("Class of Soviet cold-war destroyers");
 
-        ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
+        ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);;
         ArticlePageObject.waitForTitleElement();
         String article_title_for_deletion = ArticlePageObject.getArticleTitle();
         ArticlePageObject.addArticleToMyList(folder_name);
@@ -59,12 +73,12 @@ public class MyListsTests extends CoreTestCase
         ArticlePageObject.addArticleToExistingFolder(folder_name);
         ArticlePageObject.closeArticle();
 
-        NavigationUI NavigationUI = new NavigationUI(driver);
+        NavigationUI NavigationUI = NavigationUIFactory.get(driver);
         NavigationUI.clickMyLists();
         NavigationUI.waitForMyListsPageToRender();
         NavigationUI.clickFolderNameInMyLists(folder_name);
 
-        MyListsPageObject MyListsPageObject = new MyListsPageObject(driver);
+        MyListsPageObject MyListsPageObject = MyListsPageObjectFactory.get(driver);
         MyListsPageObject.swipeByArticleToDelete(article_title_for_deletion);
         MyListsPageObject.waitForArticleToDisappearByTitle(article_title_for_deletion);
         MyListsPageObject.waitForArticleToAppearByTitle(article_title_to_test_in_folder);

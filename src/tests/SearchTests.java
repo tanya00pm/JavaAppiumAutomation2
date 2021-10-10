@@ -31,7 +31,7 @@ public class SearchTests extends CoreTestCase
     {
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
-        String search_line = "Linkin Park Diskography";
+        String search_line = "Linkin Park Discography";
         SearchPageObject.typeSearchLine(search_line);
         int amount_of_search_results = SearchPageObject.getAmountOfFoundArticles();
 
