@@ -190,7 +190,6 @@ public class MainPageObject {
     public void assertElementNotPresent(String locator, String error_message)
     {
         int amount_of_elements = getAmountOfElements(locator);
-        System.out.println(amount_of_elements);
         if(Platform.getInstance().isAndroid()) {
             if(amount_of_elements > 0) {
             String default_message = "An element '" + locator +"' supposed to be present.";
