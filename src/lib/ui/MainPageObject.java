@@ -182,18 +182,25 @@ public class MainPageObject {
 
     public int getAmountOfElements(String locator)
     {
-        By by = this.getLocatorByString(locator);
-        List elements = driver.findElements(by);
-        return elements.size();
+            By by = this.getLocatorByString(locator);
+            List elements = driver.findElements(by);
+            return elements.size();
     }
 
     public void assertElementNotPresent(String locator, String error_message)
     {
         int amount_of_elements = getAmountOfElements(locator);
-        if(amount_of_elements > 0)
-        {
+        System.out.println(amount_of_elements);
+        if(Platform.getInstance().isAndroid()) {
+            if(amount_of_elements > 0) {
             String default_message = "An element '" + locator +"' supposed to be present.";
             throw new AssertionError(default_message + " " + error_message);
+            }
+        } else {
+            if(amount_of_elements > 2) {
+                String default_message = "An element '" + locator +"' has more elements to be present.";
+                throw new AssertionError(default_message + " " + error_message);
+            }
         }
     }
 

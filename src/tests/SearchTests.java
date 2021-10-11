@@ -68,7 +68,7 @@ public class SearchTests extends CoreTestCase
     }
     /* Ex3 */
 
-    /* Ex9 */
+    /* Ex9, Ex12 */
     @Test
     public void testSearchArticlesByTitleAndDescription()
     {
@@ -90,5 +90,5 @@ public class SearchTests extends CoreTestCase
         SearchPageObject.waitForElementByTitleAndDescription("Kotlin-class destroyer",
                 "Class of Soviet cold-war destroyers");
     }
-    /* Ex9 */
+    /* Ex9, Ex12 */
 }
